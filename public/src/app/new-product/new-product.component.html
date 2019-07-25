@@ -1,0 +1,28 @@
+<h2>New Product</h2>
+
+<form (submit)="onSubmit()">
+    <div class="form-group">
+        <label for="">Name</label>
+        <input type="text" name="newProduct.name" [(ngModel)]="newProduct.name" required minlength="3" [(ngModel)]="newProduct.name" #name = "ngModel">
+        <div style ="color:red" *ngIf = "!name.valid">Product Name required (FrontEnd)</div>
+    </div>
+    <p style ="color:red" *ngIf = "errors.name"> {{errors.name.message}}</p>
+
+    <div class="form-group">
+        <label for="">Qty</label>
+        <input type="text" name="newProduct.quantity" [(ngModel)]="newProduct.quantity" required min="0" [(ngModel)]="newProduct.quantity" #quantity = "ngModel">
+        <div style ="color:red" *ngIf = "!quantity.valid">Product Qty required (FrontEnd)</div>
+    </div>
+    <p style ="color:red" *ngIf = "errors.quantity"> {{errors.quantity.message}}</p>
+
+    <div class="form-group">
+        <label for="">Price</label>
+        <input type="text" name="newProduct.price" [(ngModel)]="newProduct.price" required min="0" [(ngModel)]="newProduct.price" #price = "ngModel">
+        <div style ="color:red" *ngIf = "!price.valid">Product Price required (FrontEnd)</div>
+    </div>
+    <p style ="color:red" *ngIf = "errors.price"> {{errors.price.message}}</p>
+
+    <button class= "btn btn-primary" [disabled]="!price.valid || !quantity.valid || !name.valid">Create</button>
+    <button class= "btn btn-dark" (click)="resetHome()">Reset</button>
+
+</form>

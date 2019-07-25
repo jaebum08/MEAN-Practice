@@ -1,0 +1,30 @@
+<h2>Update Product</h2>
+
+<div *ngIf="oneProduct">
+    <form (submit)="onSubmit(oneProduct._id)">
+        <div class="form-group">
+            <label for="">Name</label>
+            <input type="text" name="oneProduct.name" [(ngModel)]="oneProduct.name" required minlength="3" [(ngModel)]="oneProduct.name" #name = "ngModel">
+            <div style ="color:red" *ngIf = "!name.valid">Product Name required (FrontEnd)</div>
+        </div>
+        <p style ="color:red" *ngIf = "errors.name"> {{errors.name.message}}</p>
+
+        <div class="form-group">
+            <label for="">Qty</label>
+            <input type="text" name="oneProduct.quantity" [(ngModel)]="oneProduct.quantity" required min="0" [(ngModel)]="oneProduct.quantity" #quantity = "ngModel">
+            <div style ="color:red" *ngIf = "!quantity.valid">Product Quantity required (FrontEnd)</div>
+        </div>
+        <p style ="color:red" *ngIf = "errors.quantity"> {{errors.quantity.message}}</p>
+
+        <div class="form-group">
+            <label for="">Price</label>
+            <input type="text" name="oneProduct.price" [(ngModel)]="oneProduct.price" required min="0" [(ngModel)]="oneProduct.price" #price = "ngModel">
+            <div style ="color:red" *ngIf = "!price.valid">Product Price required (FrontEnd)</div>
+        </div>
+        <p style ="color:red" *ngIf = "errors.price"> {{errors.price.message}}</p>
+
+        <button class= "btn btn-succes" type="submit" [disabled]="!price.valid || !quantity.valid || !name.valid">Update</button>
+
+    </form>
+    <button class= "btn btn-dark" (click)="resetHome(oneProduct._id)">Reset</button>
+</div>

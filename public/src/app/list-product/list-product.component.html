@@ -1,0 +1,25 @@
+<h2>Product List</h2>
+<a [routerLink]="['new']" >Add New Product</a>
+<table *ngIf="getAllProduct">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Qty</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let product of getAllProduct">
+        <tr>
+            <td>{{product._id}}</td>
+            <td>{{product.name}}</td>
+            <td>{{product.quantity}}</td>
+            <td>{{product.price}}</td>
+            <td>
+                <button class="btn btn-warning"[routerLink]="['/products', product._id, 'edit']">Edit</button>
+                <button class="btn btn-info" [routerLink]="['/products', product._id]">Details</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

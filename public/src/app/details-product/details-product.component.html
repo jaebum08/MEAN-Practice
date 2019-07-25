@@ -1,0 +1,9 @@
+<h2>Product Details</h2>
+<div *ngIf="oneProduct">
+    <div style="color:red" *ngIf="oneProduct.quantity!=0"> To delete a product, the Qty must be 0.</div>
+    <p>Name: {{oneProduct.name}}</p>
+    <p>Qty: {{oneProduct.quantity}}</p>
+    <p>Price: ${{oneProduct.price}}</p>
+    <button class="btn btn-primary" (click)="goHome()">Back</button>
+    <button class="btn btn-danger"[disabled]="oneProduct.quantity!=0" (click)="delete(oneProduct._id)">DELETE</button>
+</div>
